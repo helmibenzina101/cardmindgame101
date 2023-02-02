@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+<label>joueur1</label>
+<p id="p1"></p>
+<label>joueur2</label>
+<p id="p2"></p>
+
+
+<!--<img id="myImage" src="pic_bulboff.gif" style="width:100px" onclick="document.getElementById('myImage').src='pic_bulbon.gif'">-->
+<img src="images.jpeg" id="0" style="width:100px;height:100px;" onclick="reverse(event)">
+<img src="images.jpeg" id="1" style="width:100px;height:100px;" onclick="reverse(event)">
+<img src="images.jpeg" id="2" style="width:100px;height:100px;" onclick="reverse(event)"><br></br>
+<img src="images.jpeg" id="3" style="width:100px;height:100px;" onclick="reverse(event)">
+<img src="images.jpeg" id="4" style="width:100px;height:100px;" onclick="reverse(event)">
+<img src="images.jpeg" id="5" style="width:100px;height:100px;" onclick="reverse(event)">
+<script>
+    const t=["cat.jpeg","dog.jpeg","dog.jpeg","cow.jpeg","cow.jpeg","cat.jpeg"];
+    let nbrclick = 0 ;
+    let cards=["",""];
+    let players=[0,0];
+    let nbrclicktotal=0;
+    let cardnum=[0,0] ;
+    function reset ()
+    {
+        document.getElementById(cardnum[0]).src="images.jpeg";
+     document.getElementById(cardnum[1]).src="images.jpeg";
+     nbrclick=0;
+    } 
+function reverse(event) {
+    document.getElementById(event.target.id).src=t[event.target.id];        
+    cards[nbrclick] = t[event.target.id];
+    cardnum[nbrclick]=event.target.id;
+    nbrclick+=1;
+    nbrclicktotal+=1;
+    if (nbrclick==2)
+    {
+        if (cards[0]==cards[1])
+        {
+            if (nbrclicktotal%2==0)
+               {players[0]+=1;
+               nbrclick=0;}
+            else if(nbrclicktotal%4==0)
+               { players[1]+=1;
+                nbrclick=0;}
+                }
+               else
+               { 
+
+                setTimeout(reset(), 10000)
+               }
+               nbrclick=0;
+    }
+    document.getElementById("p1").innerHTML=players[0];
+    document.getElementById("p2").innerHTML=players[1];        
+
+
+     
+}
+</script>
+
+
+</body>
+</html>
